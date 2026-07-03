@@ -47,6 +47,14 @@ export const configClient: SpatialConfigClient = {
 
 export const commandClient: CommandExecutionClient = {
   async executeCommand(command: string): Promise<CommandResult> {
+    if (command.startsWith("enter:")) {
+      // navigate into a room (a building on the outside). The verb is bridged
+      // to SpatialContext by the Teleporter component in App.tsx — the command
+      // layer itself never touches navigation state directly.
+      const room = command.slice(6);
+      window.dispatchEvent(new CustomEvent("postmark-enter", { detail: room }));
+      return { stdout: `entering ${room}`, exitCode: 0 };
+    }
     if (command.startsWith("open:")) {
       const target = command.slice(5);
       if (openIsAllowed(target)) {

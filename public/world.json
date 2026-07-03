@@ -58,12 +58,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -135,12 +135,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -212,12 +212,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -289,12 +289,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -366,12 +366,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -443,12 +443,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -520,12 +520,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -597,12 +597,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -674,12 +674,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -751,12 +751,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -828,12 +828,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -905,12 +905,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -982,12 +982,12 @@
     }
    },
    "doors": {
-    "to-town-centre": {
+    "to-outside": {
      "x": 46,
      "y": 89,
      "width": 8,
      "height": 8,
-     "leadsTo": "the-town-centre",
+     "leadsTo": "the-town-outside",
      "orientation": "down"
     }
    },
@@ -1022,8 +1022,168 @@
    },
    "floor_pattern": "repeating-linear-gradient(135deg, #1c2130 0 16px, #181d2b 16px 32px)"
   },
+  "the-town-outside": {
+   "name": "Postmark",
+   "walls": {
+    "topWall": {
+     "orientation": "horizontal",
+     "x": 0,
+     "y": 2,
+     "width": 100,
+     "height": 2.5,
+     "style": "brick"
+    },
+    "bottomWall": {
+     "orientation": "horizontal",
+     "x": 0,
+     "y": 95,
+     "width": 100,
+     "height": 2.5,
+     "style": "brick"
+    },
+    "leftWall": {
+     "orientation": "vertical",
+     "x": 0,
+     "y": 2,
+     "width": 1.2,
+     "height": 95,
+     "style": "brick"
+    },
+    "rightWall": {
+     "orientation": "vertical",
+     "x": 98.8,
+     "y": 2,
+     "width": 1.2,
+     "height": 95,
+     "style": "brick"
+    }
+   },
+   "doors": {},
+   "applications": {
+    "the-calcite-hearth": {
+     "name": "the calcite hearth",
+     "command": "enter:the-calcite-hearth",
+     "x": 18.900000000000002,
+     "y": 64.812,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-calcite-hearth.png"
+    },
+    "the-clearing": {
+     "name": "the clearing",
+     "command": "enter:the-clearing",
+     "x": 72.5,
+     "y": 43,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-clearing.png"
+    },
+    "the-fieldstone-study": {
+     "name": "the Fieldstone Study",
+     "command": "enter:the-fieldstone-study",
+     "x": 72.5,
+     "y": 43,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-fieldstone-study.png"
+    },
+    "the-heart-house": {
+     "name": "The Heart House",
+     "command": "enter:the-heart-house",
+     "x": 17.5,
+     "y": 20.040000000000003,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-heart-house.png"
+    },
+    "the-lanternstep-house": {
+     "name": "the Lanternstep House",
+     "command": "enter:the-lanternstep-house",
+     "x": 45.5,
+     "y": 27.42,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-lanternstep-house.png"
+    },
+    "the-lock-house": {
+     "name": "the lock house",
+     "command": "enter:the-lock-house",
+     "x": 45.5,
+     "y": 70.06,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-lock-house.png"
+    },
+    "the-pando-peak": {
+     "name": "the Pando Peak",
+     "command": "enter:the-pando-peak",
+     "x": 34.5,
+     "y": 10.200000000000003,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-pando-peak.png"
+    },
+    "the-returning-house": {
+     "name": "the Returning House",
+     "command": "enter:the-returning-house",
+     "x": 72.1,
+     "y": 64.812,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-returning-house.png"
+    },
+    "the-still-here-light": {
+     "name": "the Still-Here Light",
+     "command": "enter:the-still-here-light",
+     "x": 7.5,
+     "y": 43,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-still-here-light.png"
+    },
+    "the-still-reach": {
+     "name": "the Still Reach",
+     "command": "enter:the-still-reach",
+     "x": 34.5,
+     "y": 65.14,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-still-reach.png"
+    },
+    "the-threshold-house": {
+     "name": "the threshold house",
+     "command": "enter:the-threshold-house",
+     "x": 49.2,
+     "y": 63.054,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-threshold-house.png"
+    },
+    "the-trueing-house": {
+     "name": "the Trueing-House",
+     "command": "enter:the-trueing-house",
+     "x": 56.5,
+     "y": 20.860000000000003,
+     "width": 620,
+     "height": 230,
+     "image": "sprites/houses/the-trueing-house.png"
+    },
+    "the-post-office": {
+     "name": "the post office",
+     "command": "enter:the-town-centre",
+     "x": 44,
+     "y": 38,
+     "width": 780,
+     "height": 280,
+     "image": "sprites/houses/the-post-office.png"
+    }
+   },
+   "floor_image": "sprites/ground/grass.png",
+   "floor_tile": true,
+   "floor_tile_size": 48
+  },
   "the-town-centre": {
-   "name": "the Town Centre",
+   "name": "the Post Office",
    "walls": {
     "topWall": {
      "orientation": "horizontal",
@@ -1059,101 +1219,13 @@
     }
    },
    "doors": {
-    "to-the-heart-house": {
-     "x": 20.8,
-     "y": 6.5,
-     "width": 7,
-     "height": 7,
-     "orientation": "up",
-     "leadsTo": "the-heart-house"
-    },
-    "to-the-lanternstep-house": {
-     "x": 37.6,
-     "y": 6.5,
-     "width": 7,
-     "height": 7,
-     "orientation": "up",
-     "leadsTo": "the-lanternstep-house"
-    },
-    "to-the-pando-peak": {
-     "x": 54.4,
-     "y": 6.5,
-     "width": 7,
-     "height": 7,
-     "orientation": "up",
-     "leadsTo": "the-pando-peak"
-    },
-    "to-the-trueing-house": {
-     "x": 71.2,
-     "y": 6.5,
-     "width": 7,
-     "height": 7,
-     "orientation": "up",
-     "leadsTo": "the-trueing-house"
-    },
-    "to-the-calcite-hearth": {
-     "x": 18,
-     "y": 88,
-     "width": 7,
-     "height": 7,
-     "orientation": "down",
-     "leadsTo": "the-calcite-hearth"
-    },
-    "to-the-lock-house": {
-     "x": 32,
-     "y": 88,
-     "width": 7,
-     "height": 7,
-     "orientation": "down",
-     "leadsTo": "the-lock-house"
-    },
-    "to-the-returning-house": {
+    "to-outside": {
      "x": 46,
-     "y": 88,
-     "width": 7,
-     "height": 7,
-     "orientation": "down",
-     "leadsTo": "the-returning-house"
-    },
-    "to-the-still-reach": {
-     "x": 60,
-     "y": 88,
-     "width": 7,
-     "height": 7,
-     "orientation": "down",
-     "leadsTo": "the-still-reach"
-    },
-    "to-the-threshold-house": {
-     "x": 74,
-     "y": 88,
-     "width": 7,
-     "height": 7,
-     "orientation": "down",
-     "leadsTo": "the-threshold-house"
-    },
-    "to-the-still-here-light": {
-     "x": 0.5,
-     "y": 45,
-     "width": 5,
-     "height": 9,
-     "orientation": "left",
-     "leadsTo": "the-still-here-light"
-    },
-    "to-the-clearing": {
-     "x": 94.5,
-     "y": 32.666666666666664,
-     "width": 5,
-     "height": 9,
-     "orientation": "right",
-     "leadsTo": "the-clearing"
-    },
-    "to-the-fieldstone-study": {
-     "x": 94.5,
-     "y": 57.33333333333333,
-     "width": 5,
-     "height": 9,
-     "orientation": "right",
-     "leadsTo": "the-fieldstone-study"
+     "y": 89,
+     "width": 8,
+     "height": 8,
+     "leadsTo": "the-town-outside",
+     "orientation": "down"
     }
    },
    "applications": {

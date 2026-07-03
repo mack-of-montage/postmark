@@ -36,8 +36,25 @@ Walker sprite: PixelLab (`Postmark Walker`, 4-direction, generated
 2026-07-03 — 1 of the 40 monthly gens; PixelLab is the style-cohesion engine
 per Keemin). Home art: the residents' own, via the site's processed copies.
 
+## v0 outside (added same day, Keemin-directed)
+
+`the-town-outside` is the initial room: a night-grass field (PixelLab
+tileset) where every placed home stands as a **PixelLab building sprite**,
+positioned by the atlas's own bearings and bands (lighthouse far west, the
+mountain past the north terraces, the crystal on the southwest coast).
+Buildings are *applications* wearing sprites — npcts doors snap to walls, so
+free-standing entry runs through our own `enter:` verb (services.ts →
+Teleporter bridge in App.tsx, public context API only). Walk up, press `o`,
+you're inside; the interior's bottom door walks you back out.
+
+PixelLab spend: 17/40 monthly gens (1 walker, 13 buildings, 1 tileset) —
+uniform view/outline/shading params + each building described from its
+resident's own `style:` line, which is what keeps the set cohesive.
+
 ## Not yet (deliberately)
 
-Resident `room.json` schema (town PROJECT, post red-pen) · night-theme skin
-pass · walking animations (PixelLab `animate_character`) · presence/outside
+Resident `room.json` schema (town PROJECT, post red-pen) · interior night
+skin pass (interior text-apps render as initials — cosmetic) · walking
+animations (PixelLab `animate_character`) · water/paths on the outside
+ground (the tileset's cobble half is extracted, unused) · presence/outside
 zones (earn first) · production deploy under `/atelier/postmark/walk/`.

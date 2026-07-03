@@ -91,9 +91,9 @@ for (const h of homes) {
     name: h.title,
     walls: walls(),
     doors: {
-      "to-town-centre": {
+      "to-outside": {
         x: 46, y: 89, width: 8, height: 8,
-        leadsTo: "the-town-centre", orientation: "down",
+        leadsTo: "the-town-outside", orientation: "down",
       },
     },
     applications: apps,
@@ -105,36 +105,72 @@ function regionName(id) {
   return town.regions.find((r) => r.id === id)?.region ?? id;
 }
 
-// ── the Town Centre: hub room, doors placed by the atlas's own bearings ─────
-// bearing → which wall the door sits on, and how doors sharing a wall spread.
-const WALL_FOR = {
-  N: "top", NE: "top", NW: "top",
-  S: "bottom", SE: "bottom", SW: "bottom",
-  E: "right", W: "left", "-": "bottom",
+// ── the town outside: v0 open ground, houses placed by the atlas itself ─────
+// bearing → direction from the square; band → distance out. Each house is a
+// DOOR wearing its PixelLab sprite: walk into the house, be in the house.
+import { existsSync } from "node:fs";
+const DIR = {
+  N: [0, -1], S: [0, 1], E: [1, 0], W: [-1, 0],
+  NE: [0.7, -0.7], NW: [-0.7, -0.7], SE: [0.7, 0.7], SW: [-0.7, 0.7], "-": [0, 0.4],
 };
-const buckets = { top: [], bottom: [], left: [], right: [] };
+const RADIUS = {
+  quayside: 13, "lower-slope": 19, "upper-terrace": 21, "descending-terraces": 26,
+  "high-slope": 27, downwater: 27, "the-mouth": 33, "the-coast": 38, outskirts: 40,
+};
+// npcts doors snap to walls, so free-standing buildings are APPLICATIONS
+// wearing their PixelLab sprites; walking up + interact fires `enter:<room>`,
+// which the app's Teleporter bridges to navigation. App w/h are wall-thickness
+// units (~0.21px/unit horizontally, ~0.56px/unit vertically at 1400x850).
+const outsideBuildings = {};
+const seen = new Map(); // spot collision nudge: same bearing+band spreads
 for (const h of homes) {
-  if (h.resident === "postmaster") continue; // the post office IS this room
-  buckets[WALL_FOR[h.bearing] ?? "bottom"].push(h);
+  if (h.resident === "postmaster") continue; // the post office stands at the centre
+  const [ux, uy] = DIR[h.bearing] ?? DIR["-"];
+  const r = RADIUS[h.band] ?? 24;
+  const key = h.bearing; // spread by bearing: same-direction homes fan out
+  const n = seen.get(key) ?? 0;
+  seen.set(key, n + 1);
+  const nudge = (n % 2 === 0 ? 1 : -1) * Math.ceil(n / 2) * 11 * (h.bearing === "E" || h.bearing === "W" ? 0 : 1);
+  const x = Math.min(86, Math.max(3, 50 + ux * r - 4.5 + nudge));
+  const y = Math.min(76, Math.max(8, 50 + uy * r * 0.82 - 7 + (ux !== 0 && nudge ? n * 8 : 0)));
+  const sprite = `sprites/houses/${h.id}.png`;
+  outsideBuildings[h.id] = {
+    name: h.title,
+    command: `enter:${h.id}`,
+    x, y, width: 620, height: 230,
+    ...(existsSync(join(ROOT, "public", sprite)) ? { image: sprite } : { text: h.title }),
+  };
 }
-for (const b of Object.values(buckets)) b.sort((a, b2) => a.id.localeCompare(b2.id));
+const poSprite = "sprites/houses/the-post-office.png";
+outsideBuildings["the-post-office"] = {
+  name: "the post office",
+  command: "enter:the-town-centre",
+  x: 44, y: 38, width: 780, height: 280,
+  ...(existsSync(join(ROOT, "public", poSprite)) ? { image: poSprite } : { text: "the post office" }),
+};
 
-const hubDoors = {};
-function spread(list, place) {
-  list.forEach((h, i) => {
-    const t = (i + 1) / (list.length + 1); // even spacing along the wall
-    hubDoors[`to-${h.id}`] = { ...place(t), leadsTo: h.id };
-  });
-}
-spread(buckets.top,    (t) => ({ x: 4 + t * 84, y: 6.5,  width: 7, height: 7, orientation: "up" }));
-spread(buckets.bottom, (t) => ({ x: 4 + t * 84, y: 88, width: 7, height: 7, orientation: "down" }));
-spread(buckets.left,   (t) => ({ x: 0.5, y: 8 + t * 74, width: 5, height: 9, orientation: "left" }));
-spread(buckets.right,  (t) => ({ x: 94.5, y: 8 + t * 74, width: 5, height: 9, orientation: "right" }));
+const groundTile = "sprites/ground/grass.png";
+rooms["the-town-outside"] = {
+  name: "Postmark",
+  walls: {
+    topWall:    { orientation: "horizontal", x: 0, y: 2,  width: 100, height: 2.5, style: "brick" },
+    bottomWall: { orientation: "horizontal", x: 0, y: 95, width: 100, height: 2.5, style: "brick" },
+    leftWall:   { orientation: "vertical",   x: 0, y: 2,  width: 1.2, height: 95, style: "brick" },
+    rightWall:  { orientation: "vertical",   x: 98.8, y: 2, width: 1.2, height: 95, style: "brick" },
+  },
+  doors: {},
+  applications: outsideBuildings,
+  ...(existsSync(join(ROOT, "public", groundTile))
+    ? { floor_image: groundTile, floor_tile: true, floor_tile_size: 48 }
+    : { floor_pattern: "repeating-linear-gradient(0deg, #101826 0 24px, #0d141f 24px 48px)" }),
+};
 
 rooms["the-town-centre"] = {
-  name: "the Town Centre",
+  name: "the Post Office",
   walls: walls(),
-  doors: hubDoors,
+  doors: {
+    "to-outside": { x: 46, y: 89, width: 8, height: 8, leadsTo: "the-town-outside", orientation: "down" },
+  },
   applications: {
     "the-post-office": {
       name: "the post office",
@@ -179,4 +215,4 @@ const world = {
 const out = join(ROOT, "public", "world.json");
 mkdirSync(dirname(out), { recursive: true });
 writeFileSync(out, JSON.stringify(world, null, 1) + "\n");
-console.log(`wrote public/world.json — ${Object.keys(rooms).length} rooms (${Object.keys(hubDoors).length} doors off the Centre)`);
+console.log(`wrote public/world.json — ${Object.keys(rooms).length} rooms (${Object.keys(outsideBuildings).length} buildings on the outside)`);
