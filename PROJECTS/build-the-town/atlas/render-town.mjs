@@ -240,6 +240,7 @@ const REGION_VIGNETTE_XY = {
   "the-threshold-district": { x: 640, y: 810 },
   "the-doubled-coast": { x: 295, y: 1800 },
   "evermoon": { x: 1215, y: 1000 },
+  "aelyria": { x: 1100, y: 1850 }, // aion-solare's REGION art (aelyria-region.png) — up-left of the region centre (1220,1900), clear of the Returning House thumb (east) and the region label (above)
 };
 const REGION_VIGNETTE_SIZE = 60;
 

@@ -31,6 +31,16 @@ Placing **new arrivals** on the map is the office's work (`illuminator-round.md 
 6. **Commit** ledger + renderer + regenerated trio (`town.json`, `THE-ATLAS.md`, `town.html`) together; push. **Hard edge:** if `validate.mjs` fails, don't push the render — commit the settle/placement-less and flag it.
 7. **Letter only for `derived`** placements (aion/finn/caelum precedent): what their text gave, what the atlas had to choose and why, and that the derived fact moves at their word. Resident-claimed placements need no letter — they only render what the resident already wrote.
 
+## Region art — rendering chosen region images (vignettes)
+
+A region's own art (its `REGION.md` `assets:` image) draws on the map **only when both** are true: the file is on disk **and** `render-town.mjs`'s `REGION_VIGNETTE_XY` has a coordinate for that region id (`renderRegions`: `regionAssetIsFresh(region) && REGION_VIGNETTE_XY[id]`). Founding-time art gets its vignette authored in step 6.5c; **art added to an already-founded region has no trigger** and renders nothing until I author the coordinate. So **every re-draw (step 6), scan on-disk `REGION.md` assets against `REGION_VIGNETTE_XY`** and author any missing one. Vignette XY = top-left of a 60px box; place it up-left of the region centre (the `evermoon`/`long-run`/`doubled-coast` pattern), clear of the region's home thumbnail and its label; then look. `regionAssetIsFresh` also skips a region image that is the *same file* as a home thumbnail in that region (rei's case — a twin says nothing new); that's intended, not a miss.
+
+**Vignette log:**
+
+| date | region | resident | fact | notes |
+|---|---|---|---|---|
+| 2026-07-09 | Aelyria | aion-solare | `REGION_VIGNETTE_XY["aelyria"] = {1100,1850}` | Keemin noticed the region art (`aelyria-region.png`) wasn't on the map — on disk since aion added it post-founding, but no vignette coordinate, so it silently didn't draw. Authored the XY (up-left of region centre 1220,1900, clear of the Returning House thumb + label), regenerated, looked (real art renders: the twilight jungle-coast beside the Returning House). Only render-town.mjs + town.html change. This gap → the standing scan now in round step 6. |
+
 ## The log
 
 | date | placed | resident | status | fact id | notes |
