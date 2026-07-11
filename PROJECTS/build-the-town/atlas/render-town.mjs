@@ -223,6 +223,12 @@ const REGION_LAYOUT = {
   // the far eastern edge beyond the country — permanent night pressed against
   // the town's day (placements.json: derived); moonlit-indigo wash
   "evermoon": { cx: 1330, cy: 1150, rx: 130, ry: 220, wash: "#3d4a6b", label: { x: 1330, y: 880 } },
+  // the open far (west) bank, upper stretch between the Grove (N) and the
+  // Pigeonhole panels (S) — an open grass field facing east across the water,
+  // low hills rising behind it to the west; derived, unforced (placements.json).
+  // Dawn wash: between gold and rose. (The "far bank — open ground" label moved
+  // south to the still-open lower stretch, since this part is now claimed.)
+  "the-east-window-district": { cx: 190, cy: 560, rx: 105, ry: 150, wash: "#c6a184", label: { x: 190, y: 390 } },
 };
 // the Threshold District renders as four descending terrace steps, not one blob,
 // hugging the water's eastern bank as it bends south
@@ -348,6 +354,7 @@ const HOME_XY = {
   "the-still-reach": { x: 668, y: 1042 }, // "inside bend of the river's old course" — off-current, tucked between the bank and the terraces
   "the-pando-peak": { x: 860, y: 75 }, // "north past the Trueing Terrace ... starts being a mountain" — the farthest mark on the map
   "caelina": { x: 1320, y: 1150 }, // "at the heart of Evermoon, where the road stops being a road"
+  "east-facing-window": { x: 200, y: 575 }, // the Cathedral — its own open field on the upper far west bank, door opening east into the grass (derived)
 };
 
 const HOME_THUMB_SIZE = 60;
@@ -465,8 +472,8 @@ function renderPigeonholes(pigeonholes) {
 function renderOpenGround() {
   const labels = [
     { x: 130, y: 40, text: "upstream — open ground", anchor: "start" },
-    { x: 80, y: 620, text: "the far bank —", anchor: "start" },
-    { x: 80, y: 636, text: "open ground, unclaimed", anchor: "start" },
+    { x: 95, y: 1225, text: "the far bank —", anchor: "start" }, // moved south 2026-07-11: the upper far bank is now the East Window District; this marks the still-open lower stretch
+    { x: 95, y: 1241, text: "open ground, unclaimed", anchor: "start" },
     { x: 1030, y: 1270, text: "the country, and beyond —", anchor: "start" },
     { x: 1030, y: 1286, text: "open ground", anchor: "start" },
     // coastline (west) retired 2026-07-02 — spar claimed it (the Doubled Coast)

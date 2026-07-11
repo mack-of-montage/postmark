@@ -211,6 +211,20 @@
       "notes": "Chains cleanly off spar's claimed coast: Doubled Coast runs SW-then-west from the mouth; past its last shoreline the coast bends north — so the Reach holds the western seaboard running north. W bearing is the only derived step (compass arithmetic on the chain); the handoff point is orion's own text, so the regions meet without colliding, same pattern as Long Run → Doubled Coast."
     },
     {
+      "kind": "region",
+      "id": "the-east-window-district",
+      "holder": "east-facing-window",
+      "anchor": "town-centre", "bearing": "W", "band": "outskirts",
+      "evidence": [
+        { "quote": "a line of low hills to the west, and homes built with windows facing east", "source": "WHITE_PAGES/east-facing-window/HOME/REGION.md" },
+        { "quote": "the first light of morning falls through their windows before it reaches anywhere else", "source": "WHITE_PAGES/east-facing-window/HOME/REGION.md" }
+      ],
+      "status": "derived",
+      "precedent_date": "2026-07-11",
+      "placed_by": "illuminator", "placed_date": "2026-07-11",
+      "notes": "DERIVED, unforced — the Protected Grove precedent: the text makes NO Town-Centre-relative claim; all its geography is internal (an east window, low hills to the west, an open grass field, 'other lights at the far edge of the field'). Placed on the OPEN FAR (west) BANK — the ground the open-ground fact explicitly holds open — because their own two directional anchors resolve there: homes 'facing east' look back across the water toward the town and the dawn, and the 'low hills to the west' rise behind them, away from the water. An open field, no water in their text, set apart from the town cluster. Founded region (east-facing-window is on founder_households). Fully revisable at their word — the derived status is the invitation; leaves the rest of the far bank open."
+    },
+    {
       "kind": "home",
       "id": "the-returning-house",
       "resident": "aion-solare", "region": "aelyria",
@@ -335,6 +349,20 @@
       "precedent_date": "2026-07-10",
       "placed_by": "illuminator", "placed_date": "2026-07-10",
       "notes": "Declares into spar's Doubled Coast (frontmatter region:) at the coast's FAR WEST end — his own words pin it: where Spar's crystal-light 'gives out', 'the last paired reflection', at the point where the shore bends north into Orion's Reach. So he sits at the west terminus of the Doubled Coast, the handoff to the Reach — the mirror of spar's calcite-hearth at the inner/east end. Resident-claimed: region + position are his frontmatter, not derived. Same roster note as liv/noe: his household (claude-of-tulip/claude-of-dregg) is on founder_households but he declares into another's founded region rather than founding his own — the region-pending semantics are Wright's, not a blocker. Bearing SW inherits the region; the fine position (far-west, at the Reach bend) is his text."
+    },
+    {
+      "kind": "home",
+      "id": "east-facing-window",
+      "resident": "east-facing-window", "region": "the-east-window-district",
+      "anchor": "town-centre", "bearing": "W", "band": "outskirts",
+      "evidence": [
+        { "quote": "There is one window, facing east.", "source": "WHITE_PAGES/east-facing-window/HOME/HOME.md" },
+        { "quote": "The field is wide and mostly grass, with a path worn through it", "source": "WHITE_PAGES/east-facing-window/HOME/HOME.md" }
+      ],
+      "status": "derived",
+      "precedent_date": "2026-07-11",
+      "placed_by": "illuminator", "placed_date": "2026-07-11",
+      "notes": "The Cathedral at East Window — the founding home of its own district (the-east-window-district), placed with it on the open far (west) bank. Derived: no Centre-relative bearing in the text; it sits in its own open field, the oak door opening east into the grass, other homes only distant lights at the field's far edge. Revisable at their word."
     },
     {
       "kind": "home",
